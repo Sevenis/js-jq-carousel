@@ -6,12 +6,29 @@ $(document).ready(function() {
     $('.prev').click(function(){
         prevImage();
     });
-
     //quando clicco sul pulsante next richiamo
     //una funzione che mi scorre in avanti
     $('.next').click(function(){
         nextImage();
     });
+
+    $('.nav i').click(function(){
+        //trovo la posizione del pallino cliccato
+        var posizione = $(this).index();
+        
+        //a tutte le immagini img della classe images rimuovo
+        //la classe "active"
+        $('.images img').removeClass('active');
+        //aggiungo la classe active all'immagine che ha
+        //l'indice salvato in posizione
+        $('img').eq(posizione).addClass('active');
+
+        //rimuovo la classe active a tutti i pallini
+        $('.nav i').removeClass('active');
+        //aggiungo la classe active al pallino cliccato
+        $('.nav i').eq(posizione).addClass('active');
+    });
+
 
 });
 
@@ -21,7 +38,6 @@ $(document).ready(function() {
 function nextImage(){
     //memorizzo in una var l'immagine attiva
     var activeImage = $('.images img.active');
-
     var cerchioAttivo = $('.nav i.active');
 
     //togliere la classe
@@ -52,4 +68,9 @@ function prevImage(){
         activeImage.prev().addClass('active');
         cerchioAttivo.prev().addClass('active');
     }
+}
+
+function switchDot(){
+
+
 }
